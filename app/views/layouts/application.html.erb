@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name='title' content='<%= yield_meta_tag(:title, 'Facepet') %>' />
+    <meta name='description' content='<%= yield_meta_tag(:description, 'Default description') %>' />
+    <meta name='keywords' content='<%= yield_meta_tag(:keywords, '') %>' />
+    <meta name="turbolinks-cache-control" content="no-cache">
+    <title><%= if content_for?(:title) then yield(:title) + ' | ' end %>Facepet</title>
+
+    <!-- Main css styles -->
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
+
+    <!-- Include style per-controller - vendor plugins -->
+    
+    <%= stylesheet_link_tag params[:controller] if ::Rails.application.assets.find_asset("#{params[:controller]}.css") %>
+
+    <!-- Main javascript files -->
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
+
+    <%= javascript_include_tag params[:controller], 'data-turbolinks-track' => 'reload' if ::Rails.application.assets.find_asset("#{params[:controller]}.js")  %>
+
+    <%= csrf_meta_tags %>
+
+</head>
+<body class="top-navigation">
+<!-- Skin configuration box -->
+
+    <!-- Wrapper-->
+    <div id="wrapper" class="<%= params[:controller] %>.<%= params[:action] %>">
+
+        <!-- Navigation -->
+        <!--%= render 'layouts/navigation' %-->
+
+        <!-- Page wraper -->
+        <div id="page-wrapper" class="gray-bg <%= @extra_class %>">
+
+            <!-- Page wrapper -->
+            <%= render 'layouts/topnavbar' %>
+
+            <!-- Main view  -->
+            <%= yield %>
+
+            <!-- Footer -->
+            <%= render 'layouts/footer' %>
+
+        </div>
+        <!-- End page wrapper-->
+
+        <!-- Right sidebar -->
+
+    </div>
+    <!-- End wrapper-->
+
+    <!-- Include javascript per-controller - vendor plugins -->
+    <!-- javascript_include_tag params[:controller] if ::Rails.application.assets.find_asset("#{params[:controller]}.js") -->
+
+    <!-- Include javascript per-view -->
+    <!-- For demo purpose we include javascript in view but you can easily start SeedProject and organize it with Rails asset pipeline as you want -->
+    
+    <%= yield :javascript %>
+
+</body>
+</html>
