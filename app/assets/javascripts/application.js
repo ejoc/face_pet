@@ -11,6 +11,14 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
+//= require bootstrap-sprockets
+//= require metisMenu
+//= require slimscroll/jquery.slimscroll.min.js
+//= require inspinia.js
+//= require sweetalert
+//= require toastr
 //= require turbolinks
-//= require_tree .
+//= require turbolinks-compatibiliy
+//= require turbolinks

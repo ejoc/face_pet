@@ -56,7 +56,6 @@ gem 'devise', '~> 4.2'
 
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 
-
 # assest
 gem 'font-awesome-rails', '~> 4.5', '>= 4.5.0.1'
 gem 'formvalidation-rails', '~> 0.7.1'
@@ -64,6 +63,7 @@ gem 'sweetalert-rails'
 gem 'jquery-turbolinks', '~> 2.1'
 
 source 'https://rails-assets.org' do
+  gem 'rails-assets-metisMenu'
 	gem 'rails-assets-fa-bootstrap-chosen'
 	gem 'rails-assets-toastr'
 end
