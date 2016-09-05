@@ -1,0 +1,63 @@
+<%= form_for(@profile, :html => {class: 'm-t'}) do |f| %>
+	<% if @profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+      <ul>
+      <% @profile.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <div id="kv-avatar-errors-2" class="center-block" style="width:800px;display:none"></div>
+    <%= f.label :avatar  %>
+    <div class="kv-avatar center-block" >
+      <%= f.file_field :avatar, id: 'avatar', class: "file-loading" %>
+    </div>
+  
+  </div>
+
+  <div class="form-group">
+  	<%= f.label :full_name %>
+  	<%= f.text_field :full_name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+  	<%= f.label :location %>
+  	<%= f.text_field :location, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+  	<%= f.label :bio %>
+  	<%= f.text_area :bio, class: 'form-control', rows: "3" %>
+  </div>
+
+  <div class="form-group">
+  	<%= f.submit "Update profile", class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  
+  $(document).ready(function() {  
+
+    $("#avatar").fileinput({
+      overwriteInitial: true,
+      maxFileSize: 1500,
+      showClose: false,
+      showCaption: false,
+      showBrowse: false,
+      browseOnZoneClick: true,
+      removeLabel: '',
+      removeIcon: '<i class="glyphicon glyphicon-remove"></i>',
+      removeTitle: 'Cancel or reset changes',
+      elErrorContainer: '#kv-avatar-errors-2',
+      msgErrorClass: 'alert alert-block alert-danger',
+      //defaultPreviewContent: '<img src="<%= image_url "avatar/default.png" %>" alt="Your Avatar" style="width:100px"><h6 class="text-muted">Click to select</h6>',
+      defaultPreviewContent: '<%= image_tag(@profile.avatar.thumb.url, :width=> "100%", :id => "avatar_img", :alt => @profile.full_name) %><h6 class="text-muted">Click to select</h6>',
+      layoutTemplates: {main2: '{preview} {remove} {browse}'},
+      allowedFileExtensions: ["jpg", "png", "gif"]
+    });
+  });
+</script>

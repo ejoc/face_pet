@@ -66,4 +66,5 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-metisMenu'
 	gem 'rails-assets-fa-bootstrap-chosen'
 	gem 'rails-assets-toastr'
+  gem 'rails-assets-bootstrap-fileinput'
 end

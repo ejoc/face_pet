@@ -40,6 +40,8 @@
             <!-- Page wrapper -->
             <%= render 'layouts/topnavbar' %>
 
+            <%= render "layouts/flash_messages_custom", flash: flash %>
+
             <!-- Main view  -->
             <%= yield %>
 
