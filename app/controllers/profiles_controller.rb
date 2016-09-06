@@ -1,6 +1,8 @@
 class ProfilesController < ApplicationController
 
-	before_action :set_profile, only: [:show, :edit, :update, :avatar, :avatar_thumb, :avatar_medium]
+	# before_action :set_profile, only: [:show, :edit, :update, :avatar, :avatar_thumb, :avatar_medium]
+  before_action :set_profile, only: [:show, :avatar, :avatar_thumb, :avatar_medium]
+  before_action :set_profile_edit, only: [:edit, :update]
 
 	def show
 	end
@@ -44,11 +46,16 @@ class ProfilesController < ApplicationController
 	private
     # Use callbacks to share common setup or constraints between actions.
     def set_profile
+      # @profile = current_user.profile
+      @profile = Profile.find(params[:id])
+    end
+
+    def set_profile_edit
       @profile = current_user.profile
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
-      params.require(:profile).permit(:full_name, :location, :bio, :avatar)
+      params.require(:profile).permit(:full_name, :location, :bio, :avatar, :phone)
     end
 end

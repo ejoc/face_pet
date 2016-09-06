@@ -23,7 +23,7 @@ class User
   field :current_sign_in_ip, type: String
   field :last_sign_in_ip,    type: String
 
-  has_one :profile
+  has_one :profile, dependent: :delete
   before_create :build_profile
   accepts_nested_attributes_for :profile
 

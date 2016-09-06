@@ -28,6 +28,12 @@
   	<%= f.label :location %>
   	<%= f.text_field :location, class: 'form-control' %>
   </div>
+
+  <div class="form-group">
+    <%= f.label :phone %>
+    <%= f.text_field :phone, class: 'form-control', :maxlength => 15 %>
+  </div>
+
   <div class="form-group">
   	<%= f.label :bio %>
   	<%= f.text_area :bio, class: 'form-control', rows: "3" %>
@@ -57,7 +63,7 @@
       //defaultPreviewContent: '<img src="<%= image_url "avatar/default.png" %>" alt="Your Avatar" style="width:100px"><h6 class="text-muted">Click to select</h6>',
       defaultPreviewContent: '<%= image_tag(@profile.avatar.thumb.url, :width=> "100%", :id => "avatar_img", :alt => @profile.full_name) %><h6 class="text-muted">Click to select</h6>',
       layoutTemplates: {main2: '{preview} {remove} {browse}'},
-      allowedFileExtensions: ["jpg", "png", "gif"]
+      allowedFileExtensions: ["jpg", "png", "gif", 'jpeg']
     });
   });
 </script>

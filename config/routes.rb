@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   
   root to: "home#index"
 
-  resource :profile, only: [:show, :edit, :update]
+  get 'settings/profile' => 'profiles#edit'
+  resources :profiles, only: [:show, :edit, :update], path: '/u'
+  # resource :pets
 
-    match '/images/uploads/profile/avatar/:id/:filename' => 'profiles#avatar_thumb', constraints: { filename: /thumb.*/ }, via: :get
+  match '/images/uploads/profile/avatar/:id/:filename' => 'profiles#avatar_thumb', constraints: { filename: /thumb.*/ }, via: :get
   match '/images/uploads/profile/avatar/:id/:filename' => 'profiles#avatar_medium', constraints: { filename: /medium.*/ }, via: :get
 end

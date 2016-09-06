@@ -1,0 +1,48 @@
+<div class="wrapper wrapper-content">
+	<div class="row">
+  	<div class="col-lg-10 col-lg-offset-1">
+			<div class="ibox float-e-margins">
+				<div class="ibox-content">
+					<div class="row">
+						<div class="col-lg-3">
+							<%= image_tag(@profile.avatar.medium.url, :width=> "100%", :id => "avatar_img", :alt => @profile.full_name) %>
+							<div class="row">
+								<div class="col-lg-8 col-lg-offset-2">
+									<h2><%= @profile.full_name %></h2>
+								</div>
+							</div>
+							<hr>
+							<ul>
+								<% if @profile.location? %>
+									<li><i class="fa fa-location-arrow" aria-hidden="true"></i><span> <%= @profile.location %></span></li>
+								<% end %>
+								<% if @profile.user.email? %>
+									<li><i class="fa fa-envelope-o" aria-hidden="true"></i><span> <%= @profile.user.email %></span></li>
+								<% end %>
+								<% if @profile.phone? %>
+									<!-- <li><i class="fa fa-envelope-o" aria-hidden="true"></i><span> <%= @profile.phone %></span></li> -->
+								<% end %>
+								<li><i class="fa fa-clock-o" aria-hidden="true"></i> Joined on <%= @profile.created_at.strftime("%b %d, %Y") %></li>
+							</ul>
+						</div>
+						<div class="col-lg-9">
+							<div class="ibox float-e-margins">
+								<div class="ibox-title">Pets</div>
+								<div class="ibox-content">
+									<% if @profile.user.has_pets? %>
+									<% else %>
+										<div class="row">
+											<div class="col-lg-9">
+												<h2>Aun no se han agregado mascotas</h2>
+											</div>
+										</div>
+									<% end %>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+  	</div>
+  </div>
+</div>
