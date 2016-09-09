@@ -6,25 +6,25 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Pets::Type.delete_all
+Pets::Category.delete_all
 Pets::Breed.delete_all
 
-dog = Pets::Type.create!(name: 'Perros')
-cat = Pets::Type.create!(name: 'Gatos')
+dog = Pets::Category.create!(name: 'Perros')
+cat = Pets::Category.create!(name: 'Gatos')
 
-Pets::Breed.create!(name: 'Affenpinscher', type_id: dog.id)
-Pets::Breed.create!(name: 'American Bully', type_id: dog.id)
-Pets::Breed.create!(name: 'Maltés', type_id: dog.id)
-Pets::Breed.create!(name: 'Bull Terrier', type_id: dog.id)
-Pets::Breed.create!(name: 'Chihuahua', type_id: dog.id)
-Pets::Breed.create!(name: 'Clumber Spaniel', type_id: dog.id)
-Pets::Breed.create!(name: 'Doberman', type_id: dog.id)
-Pets::Breed.create!(name: 'Grifón de Bruselas', type_id: dog.id)
+Pets::Breed.create!(name: 'Affenpinscher', category_id: dog.id)
+Pets::Breed.create!(name: 'American Bully', category_id: dog.id)
+Pets::Breed.create!(name: 'Maltés', category_id: dog.id)
+Pets::Breed.create!(name: 'Bull Terrier', category_id: dog.id)
+Pets::Breed.create!(name: 'Chihuahua', category_id: dog.id)
+Pets::Breed.create!(name: 'Clumber Spaniel', category_id: dog.id)
+Pets::Breed.create!(name: 'Doberman', category_id: dog.id)
+Pets::Breed.create!(name: 'Grifón de Bruselas', category_id: dog.id)
 
 
-Pets::Breed.create!(name: 'Siamés', type_id: cat.id)
-Pets::Breed.create!(name: 'Angora', type_id: cat.id)
-Pets::Breed.create!(name: 'Persa', type_id: cat.id)
-Pets::Breed.create!(name: 'Bengala', type_id: cat.id)
-Pets::Breed.create!(name: 'Bombay', type_id: cat.id)
-Pets::Breed.create!(name: 'Ragdoll', type_id: cat.id)
+Pets::Breed.create!(name: 'Siamés', category_id: cat.id)
+Pets::Breed.create!(name: 'Angora', category_id: cat.id)
+Pets::Breed.create!(name: 'Persa', category_id: cat.id)
+Pets::Breed.create!(name: 'Bengala', category_id: cat.id)
+Pets::Breed.create!(name: 'Bombay', category_id: cat.id)
+Pets::Breed.create!(name: 'Ragdoll', category_id: cat.id)

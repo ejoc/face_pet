@@ -29,9 +29,18 @@
   </div>
 
   <div class="form-group">
+    <%= f.label :categories, class: 'col-sm-3 control-label' %>
+    <div class="col-sm-6">
+      <%= select_tag "categories", options_from_collection_for_select(Pets::Category.all, "id", "name"), {class: "form-control", :include_blank => 'Eliga la categoria'} %>
+    </div>
+  </div>
+ 
+
+  <div class="form-group" id="form-group-breed">
     <%= f.label :breed, class: 'col-sm-3 control-label' %>
     <div class="col-sm-6">
-      <%= f.collection_select :breed_id, Pets::Breed.all, :id, :name,{}, {class: "form-control"} %>
+      <%= f.grouped_collection_select :breed_id, Pets::Category.order_by(:name => 'asc'), :breeds, :name, :id, :name,{include_blank: 'Eliga la raza'}, class: "form-control chosen-select-deselect" %>
+
     </div>
   </div>
 
@@ -63,15 +72,3 @@
   </div>
 <% end %>
 
-<script>
-  $(document).on('ready', function() {
-      $("#pet_photos").fileinput({
-        uploadUrl: "/site/image-upload",
-        theme: "gly",
-        maxFileSize: 10240,
-        maxFileCount: 5,
-        maxImageHeight: 50,
-        resizeImage: true
-      });
-    });
-</script>

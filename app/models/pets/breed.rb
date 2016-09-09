@@ -4,7 +4,7 @@ module Pets
 
 		field :name
 		
-		belongs_to :type, class_name: 'Pets::Type'
+		belongs_to :category, class_name: 'Pets::Category'
 		has_many :pets
 	end
 end

@@ -1,6 +1,6 @@
 class PetsController < ApplicationController
 
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index, :photo, :photo_thumb, :photo_medium]
 	before_action :set_pet, only: [:show, :edit, :update, :destroy, :set_pet_photo]
   before_action :set_pet_photo, only: [:photo, :photo_thumb, :photo_medium]
 
@@ -29,7 +29,8 @@ class PetsController < ApplicationController
   def create
     Rails.logger.debug "parametross: #{params[:pet][:photos]}"
     @pet = current_user.pets.new(pet_params)
-    params[:pet][:photos][:photo].each {|photo| @pet.photos.build(photo: photo)}
+
+    params[:pet][:photos][:photo].each {|photo| @pet.photos.build(photo: photo)} if params[:pet][:photos].present?
 
     respond_to do |format|
       if @pet.save
@@ -102,6 +103,6 @@ class PetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pet_params
-      params.require(:pet).permit(:pname, :gender, :age, :bio, :for_adoption, :photos, :breed_id)
+      params.require(:pet).permit(:pname, :gender_cd, :age_cd, :bio, :for_adoption, :photos, :breed_id)
     end
 end

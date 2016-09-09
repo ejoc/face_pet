@@ -30,6 +30,7 @@
 								<div class="ibox-title">Pets</div>
 								<div class="ibox-content">
 									<% if @profile.user.has_pets? %>
+										<%= render 'pets' %>
 									<% else %>
 										<div class="row">
 											<div class="col-lg-9">

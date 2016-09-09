@@ -1,0 +1,10 @@
+<tr>
+  <td class="client-avatar">
+  	<%= image_tag(photo_medium_pet_path(pet, photo_id: pet.photos.first.id), :width=> "100%", :id => "avatar_img", :alt => pet.pname) %>
+  </td>
+  <td><a data-toggle="tab" href="#contact-1" class="client-link"><%= pet.pname %></a></td>
+  <td><%= pet.breed.name %></td>
+  <td> <%= pet.gender %> </td>
+	<td> <%= pet.age %> </td>
+  <td class="client-status"><span class="label label-primary">Active</span></td>
+</tr>

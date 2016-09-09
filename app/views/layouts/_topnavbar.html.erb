@@ -19,6 +19,7 @@
         <div class="navbar-collapse collapse" id="navbar">
         <% if user_signed_in? %>
             <ul class="nav navbar-nav navbar-right">
+                <li><%= link_to 'Add Pet', new_pet_path %></li>
                 <li class="dropdown">
                     <a href="#" data-turbolinks="false" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                        
@@ -27,11 +28,14 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
                         <li class="dropdown-header">
-                            <h5>Signed in as <strong class="css-truncate-target"><%= current_user.email %></strong></h5>
+                            <h5>Signed in as <strong class="css-truncate-target"><%= current_user.profile.full_name if current_user.profile.full_name? %></strong></h5>
                         </li>
                         <li role="separator" class="divider"></li>
                         <li>
-                            <%= link_to "Your profile", profile_path(current_user.profile.id) %>
+                            <%= link_to "Your Pets", profile_path(current_user.profile.id) %>
+                        </li>
+                        <li>
+                            <%= link_to "Profile", profile_path(current_user.profile.id) %>
                         </li>
                         <li>
                             <%= link_to "Settings", settings_profile_path %>
@@ -47,6 +51,9 @@
             </ul>
         <% else %>
             <ul class="nav navbar-top-links navbar-right">
+                <li>
+                    <%= link_to 'Add Pet', new_pet_path %>
+                </li>
                 <li>
                     <%= link_to "Sign in", new_user_session_path %>
                 </li>

@@ -5,6 +5,14 @@ class ProfilesController < ApplicationController
   before_action :set_profile_edit, only: [:edit, :update]
 
 	def show
+    if params[:search].present?
+      @pets = @profile.user.pets
+      # @chapters = Chapter.page(params[:page].to_i).per(15)
+    else
+      @pets = @profile.user.pets
+      # @chapters = Chapter.search(params[:search]).page(params[:page].to_i).per(15)
+    end
+    # @pets = @profile.user.pets
 	end
 
 	def edit

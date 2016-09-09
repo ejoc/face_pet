@@ -45,13 +45,18 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-
+# mongoid
 gem 'simple_enum', '~> 2.3', require: 'simple_enum/mongoid'
 gem 'mini_magick'
 gem 'mongoid', '~> 6.0.0.rc0'
 gem 'carrierwave-mongoid', '~> 0.10.0'
 gem 'mongoid-grid_fs', '~> 2.3'
 gem 'mongoid_search'
+
+# paginate
+gem 'kaminari', '~> 0.16.3'
+gem 'bootstrap-kaminari-views'
+
 
 gem 'devise', '~> 4.2'
 
@@ -65,6 +70,7 @@ gem 'jquery-turbolinks', '~> 2.1'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-metisMenu'
+  gem 'rails-assets-chosen'
 	gem 'rails-assets-fa-bootstrap-chosen'
 	gem 'rails-assets-toastr'
   gem 'rails-assets-bootstrap-fileinput'

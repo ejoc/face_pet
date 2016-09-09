@@ -1,1 +1,30 @@
-<%= current_user %>
+<div class="wrapper wrapper-content">
+	<div class="row">
+			<% @pets.each do |pet| %>
+				<div class="col-md-3">
+					<div class="ibox">
+						<div class="ibox-content product-box">
+
+							<div class="product-imitation">
+								<%= image_tag(photo_medium_pet_path(pet, photo_id: pet.photos.first.id), :width=> "100%",  :alt => pet.pname) %>
+							</div>
+
+							<div class="product-desc">
+								<small class="text-muted"><%= pet.breed.name %></small>
+								<a href="#" class="product-name"> <%= pet.pname %></a>
+								<div class="small m-t-xs">
+                    <%= pet.bio if pet.bio? %>
+                </div>
+                <div class="m-t text-righ">
+
+                    <a href="#" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
+                </div>
+							</div>
+
+						</div>
+						
+					</div>
+				</div>
+			<% end %>
+	</div>
+</div>

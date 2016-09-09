@@ -1,9 +1,9 @@
 module Pets
-	class Type
+	class Category
 		include Mongoid::Document
 
 		field :name
 
-		has_many :pets
+		has_many :breeds, class_name: 'Pets::Breed'
 	end
 end
