@@ -1,4 +1,4 @@
-<%= form_for(@profile, :html => {class: 'm-t'}) do |f| %>
+<%= form_for(@profile, :html => {class: 'm-t', :multipart => true}) do |f| %>
 	<% if @profile.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
@@ -55,13 +55,15 @@
       showCaption: false,
       showBrowse: false,
       browseOnZoneClick: true,
+      // maxImageHeight: 460,
+      // maxImageWidth: 460,
       removeLabel: '',
       removeIcon: '<i class="glyphicon glyphicon-remove"></i>',
       removeTitle: 'Cancel or reset changes',
       elErrorContainer: '#kv-avatar-errors-2',
       msgErrorClass: 'alert alert-block alert-danger',
       //defaultPreviewContent: '<img src="<%= image_url "avatar/default.png" %>" alt="Your Avatar" style="width:100px"><h6 class="text-muted">Click to select</h6>',
-      defaultPreviewContent: '<%= image_tag(@profile.avatar.thumb.url, :width=> "100%", :id => "avatar_img", :alt => @profile.full_name) %><h6 class="text-muted">Click to select</h6>',
+      defaultPreviewContent: '<%= image_tag(avatar_thumb_profile_path(@profile), :width=> "100%", :id => "avatar_img", :alt => @profile.full_name) %><h6 class="text-muted">Click to select</h6>',
       layoutTemplates: {main2: '{preview} {remove} {browse}'},
       allowedFileExtensions: ["jpg", "png", "gif", 'jpeg']
     });

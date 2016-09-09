@@ -51,6 +51,7 @@ gem 'mini_magick'
 gem 'mongoid', '~> 6.0.0.rc0'
 gem 'carrierwave-mongoid', '~> 0.10.0'
 gem 'mongoid-grid_fs', '~> 2.3'
+gem 'mongoid_search'
 
 gem 'devise', '~> 4.2'
 

@@ -5,7 +5,7 @@
 				<div class="ibox-content">
 					<div class="row">
 						<div class="col-lg-3">
-							<%= image_tag(@profile.avatar.medium.url, :width=> "100%", :id => "avatar_img", :alt => @profile.full_name) %>
+							<%= image_tag(avatar_medium_profile_path(@profile), :width=> "100%", :id => "avatar_img", :alt => @profile.full_name) %>
 							<div class="row">
 								<div class="col-lg-8 col-lg-offset-2">
 									<h2><%= @profile.full_name %></h2>
@@ -33,7 +33,7 @@
 									<% else %>
 										<div class="row">
 											<div class="col-lg-9">
-												<h2>Aun no se han agregado mascotas</h2>
+												<h2>Aun no se han agregado mascotas</h2> <%= link_to 'Add Pet', new_pets_path %>
 											</div>
 										</div>
 									<% end %>

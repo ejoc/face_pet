@@ -12,3 +12,5 @@ Rails.application.config.assets.version = '1.0'
 # config.assets.precompile << /\.(?:svg|eot|woff|ttf)\z/
 Rails.application.config.assets.precompile += %w( profiles.css )
 Rails.application.config.assets.precompile += %w( profiles.js )
+Rails.application.config.assets.precompile += %w( pets.js )
+Rails.application.config.assets.precompile += %w( pets.css )

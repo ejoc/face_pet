@@ -76,6 +76,7 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.7.0)
+    fast-stemmer (1.0.2)
     ffi (1.9.14)
     font-awesome-rails (4.6.3.1)
       railties (>= 3.2, < 5.1)
@@ -119,6 +120,9 @@ GEM
     mongoid-grid_fs (2.3.0)
       mime-types (>= 1.0, < 4.0)
       mongoid (>= 3.0, < 7.0)
+    mongoid_search (0.3.2)
+      fast-stemmer (~> 1.0.0)
+      mongoid (>= 3.0.0)
     multi_json (1.12.1)
     nio4r (1.2.1)
     nokogiri (1.6.8)
@@ -237,6 +241,7 @@ DEPENDENCIES
   mini_magick
   mongoid (~> 6.0.0.rc0)
   mongoid-grid_fs (~> 2.3)
+  mongoid_search
   puma (~> 3.0)
   rails (~> 5.0.0, >= 5.0.0.1)
   rails-assets-bootstrap-fileinput!

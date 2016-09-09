@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @pet.pname %>
+</p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @pet.owner %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @pet.age %>
+</p>
+
+<% @pet.photos.each do |photo| %>
+	<%= image_tag(photo_medium_pet_path(:photo_id => photo.id), :width=> "100%", :id => "avatar_img", :alt => @pet.pname) %>
+<% end %>
+
+)<%= link_to 'Edit', edit_pet_path(@pet) %> |
+<%= link_to 'Back', pets_path %>

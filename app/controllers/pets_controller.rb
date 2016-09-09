@@ -1,5 +1,8 @@
 class PetsController < ApplicationController
-	before_action :set_pet, only: [:show, :edit, :update, :destroy]
+
+  before_action :authenticate_user!
+	before_action :set_pet, only: [:show, :edit, :update, :destroy, :set_pet_photo]
+  before_action :set_pet_photo, only: [:photo, :photo_thumb, :photo_medium]
 
   # GET /pets
   # GET /pets.json
@@ -24,7 +27,9 @@ class PetsController < ApplicationController
   # POST /pets
   # POST /pets.json
   def create
-    @pet = Pet.new(pet_params)
+    Rails.logger.debug "parametross: #{params[:pet][:photos]}"
+    @pet = current_user.pets.new(pet_params)
+    params[:pet][:photos][:photo].each {|photo| @pet.photos.build(photo: photo)}
 
     respond_to do |format|
       if @pet.save
@@ -61,14 +66,42 @@ class PetsController < ApplicationController
     end
   end
 
+  def photo
+    content = @pet_photo.photo.read
+    if stale?(etag: content, last_modified: @pet_photo.updated_at.utc, public: true)
+      send_data content, type: @pet_photo.photo.file.content_type, disposition: "inline"
+      expires_in 0, public: true
+    end
+  end
+
+  def photo_thumb
+    content = @pet_photo.photo.thumb.read
+    if stale?(etag: content, last_modified: @pet_photo.updated_at.utc, public: true)
+      send_data content, type: @pet_photo.photo.thumb.file.content_type, disposition: "inline"
+      expires_in 0, public: true
+    end
+  end
+
+  def photo_medium
+    content = @pet_photo.photo.medium.read
+    if stale?(etag: content, last_modified: @pet_photo.updated_at.utc, public: true)
+      send_data content, type: @pet_photo.photo.medium.file.content_type, disposition: "inline"
+      expires_in 0, public: true
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_pet
       @pet = Pet.find(params[:id])
     end
 
+    def set_pet_photo
+      @pet_photo = Pet.find(params[:id]).photos.find(params[:photo_id])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def pet_params
-      params.require(:pet).permit(:pname, :bio, :for_adoption, :age, :genre, :user_id)
+      params.require(:pet).permit(:pname, :gender, :age, :bio, :for_adoption, :photos, :breed_id)
     end
 end

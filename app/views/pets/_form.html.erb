@@ -1,0 +1,77 @@
+<%= form_for(@pet, :html => {class: 'form-horizontal', :multipart => true}) do |f| %>
+  <% if @pet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pet.errors.count, "error") %> prohibited this pet from being saved:</h2>
+
+      <ul>
+      <% @pet.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+  <%= f.label :photos, class: 'col-sm-2 control-label'  %>
+  <%= f.fields_for :photos do |builder| %>
+    <div class="col-sm-8 kv-avatar center-block">
+      <%= builder.file_field :photo, id: 'pet_photos', class: "file-loading", :multiple => true %>
+    </div>
+    <div id="errorBlock" class="help-block"></div>
+  <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :pname, class: 'col-sm-3 control-label' %>
+    <div class="col-sm-6">
+      <%= f.text_field :pname, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :breed, class: 'col-sm-3 control-label' %>
+    <div class="col-sm-6">
+      <%= f.collection_select :breed_id, Pets::Breed.all, :id, :name,{}, {class: "form-control"} %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :gender, class: 'col-sm-3 control-label' %>
+    <div class="col-sm-6">
+      <%= select :pet, :gender_cd, enum_option_pairs(Pet, :gender, true), {}, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :age, class: 'col-sm-3 control-label' %>
+    <div class="col-sm-6">
+      <%= select :pet, :age_cd, enum_option_pairs(Pet, :age, true), {}, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :bio, class: 'col-sm-3 control-label' %>
+    <div class="col-sm-6">
+      <%= f.text_area :bio, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-offset-3 col-lg-9">
+      <%= f.submit  class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>
+
+<script>
+  $(document).on('ready', function() {
+      $("#pet_photos").fileinput({
+        uploadUrl: "/site/image-upload",
+        theme: "gly",
+        maxFileSize: 10240,
+        maxFileCount: 5,
+        maxImageHeight: 50,
+        resizeImage: true
+      });
+    });
+</script>

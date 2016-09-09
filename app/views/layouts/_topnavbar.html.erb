@@ -22,7 +22,7 @@
                 <li class="dropdown">
                     <a href="#" data-turbolinks="false" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                        
-                        <%= image_tag(current_user.profile.avatar.thumb.url, :alt => current_user.profile.full_name, class: 'profile-image img-circle') %>
+                        <%= image_tag(avatar_thumb_profile_path(current_user.profile), :alt => current_user.profile.full_name, class: 'profile-image img-rounded') %>
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
