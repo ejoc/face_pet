@@ -1,5 +1,5 @@
 <div class="row border-bottom white-bg">
-    <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0; padding: 0 35px 0 35px;">
         <div class="navbar-header">
             
 
@@ -9,11 +9,23 @@
 
             <%= link_to image_tag('logo/logo1.jpg'), root_path, :class => 'navbar-brand' %>
             <!--a href="/" class="navbar-brand">Vitaldatos</a-->
-            <form role="search" class="navbar-form-custom" method="post" action="">
+            <!-- <form role="search" class="navbar-form-custom" method="post" action="">
                 <div class="form-group mystyle">
                     <input type="text" placeholder="Search for pets..." class="form-control" name="top-search" id="top-search"/> 
                 </div>
-            </form>
+            </form> -->
+
+            <%= form_tag(root_path, :method => "get", id: "search-form", class: 'navbar-form-custom') do %>
+              <div class="form-group input-group mystyle">
+                <%= text_field_tag :search, params[:search], placeholder: "Search for pets...", class: 'form-control' %>
+                <span class="input-group-btn">
+                  
+                  <%= button_tag(class: "btn btn-default mystyle", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Search"}) do %>
+                      <i class="fa fa-search"></i>
+                  <% end %>
+                </span>
+              </div>
+            <% end %>
         </div>
 
         <div class="navbar-collapse collapse" id="navbar">

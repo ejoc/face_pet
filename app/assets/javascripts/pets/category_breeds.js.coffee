@@ -1,5 +1,5 @@
 ready = ->
-	# $('#form-group-breed').hide()
+	$('#form-group-breed').hide()
 	breeds = $('#pet_breed_id').html()
 	$('#categories').change ->
 		category = $('#categories :selected').text()

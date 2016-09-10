@@ -1,23 +1,85 @@
-<p id="notice"><%= notice %></p>
+<div class="wrapper wrapper-content">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="ibox product-detail">
+				<div class="ibox-content">
+					<div class="row">
 
-<p>
-  <strong>Name:</strong>
-  <%= @pet.pname %>
-</p>
+						<div class="col-md-5">
+							<div class="product-images">
+								<% @pet.photos.each do |photo| %>
+									<div>
+                    <div class="image-imitation">
+                      <%= image_tag(photo_medium_pet_path(:photo_id => photo.id), :width=> "100%", :id => "avatar_img", :alt => @pet.pname) %>
+                    </div>
+                  </div>
+								<% end %>
+							</div>
+						</div>
 
-<p>
-  <strong>Owner:</strong>
-  <%= @pet.owner %>
-</p>
+						<div class="col-md-7">
+							<h2 class="font-bold m-b-xs"><%= @pet.pname %></h2>
+							<small>Joined on <%= @pet.created_at.strftime("%b %d, %Y") %></li></small>
+							<div class="m-t-md">
+                  <h2 class="product-main-price">$406,602 <small class="text-muted">Exclude Tax</small> </h2>
+              </div>
 
-<p>
-  <strong>Age:</strong>
-  <%= @pet.age %>
-</p>
+              <hr>
 
-<% @pet.photos.each do |photo| %>
-	<%= image_tag(photo_medium_pet_path(:photo_id => photo.id), :width=> "100%", :id => "avatar_img", :alt => @pet.pname) %>
-<% end %>
+              <% if @pet.bio? %>
+	              <h4>Bio</h4>
+	              <div class="small text-muted">
+	              	<%= @pet.bio %>
+	              </div>
 
-)<%= link_to 'Edit', edit_pet_path(@pet) %> |
-<%= link_to 'Back', pets_path %>
+	            <hr>
+	            <% end %>
+
+	            <div class="row">
+	            	<div class="col-lg-3">
+	            		<h4>Breed</h4>
+	            		<div class="small text-muted">
+	            			<%= @pet.breed.name %>
+	            		</div>
+	            	</div>
+
+	            	<div class="col-lg-3">
+	            		<h4>Gender</h4>
+	            		<div class="small text-muted">
+	            			<%= @pet.gender %>
+	            		</div>
+	            	</div>
+
+	            	<div class="col-lg-3">
+	            		<h4>Age</h4>
+	            		<div class="small text-muted">
+	            			<%= @pet.age %>
+	            		</div>
+	            	</div>
+
+	            	<div class="col-lg-3">
+	            		<h4>Size</h4>
+	            		<div class="small text-muted">
+	            			<%= @pet.size %>
+	            		</div>
+	            	</div>
+
+	            </div>
+
+	            <hr>
+
+	            <h4>Owner Information</h4>
+	            <div class="small text-muted">
+	            	<%= @pet.owner.profile.full_name %><br>
+	            	<%= @pet.owner.email %><br>
+	            	<%= @pet.owner.profile.phone if @pet.owner.profile.phone? %>
+	            </div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- <p id="notice"><%= notice %></p> -->
+</div>

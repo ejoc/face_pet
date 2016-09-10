@@ -10,8 +10,9 @@ class Pet
   field :for_adoption, type: Boolean
   field :city,			   type: String
 
-  as_enum :age,     [:young, :adult, :senior, :puppy], field: { :type => Integer }
-  as_enum :gender, [:male, :female], field: { :type => Integer }
+  as_enum :age,        [:young, :adult, :senior, :puppy], field: { :type => Integer }
+  as_enum :gender,     [:male, :female], field: { :type => Integer }
+  as_enum :size,       [:small, :medium, :large], field: { :type => Integer }
   
   belongs_to :user
   
@@ -19,11 +20,12 @@ class Pet
 
   embeds_many :photos, class_name: 'PetPhoto', cascade_callbacks: true
 
-  search_in :pname, :breed => :name
-
+  # validates
   validates_presence_of :pname
-
   validate :has_at_least_one_photo
+  
+  # searches  
+  search_in :pname, :breed => :name
 
   def has_at_least_one_photo
     if photos.empty?

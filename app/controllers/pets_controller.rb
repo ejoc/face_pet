@@ -27,7 +27,6 @@ class PetsController < ApplicationController
   # POST /pets
   # POST /pets.json
   def create
-    Rails.logger.debug "parametross: #{params[:pet][:photos]}"
     @pet = current_user.pets.new(pet_params)
 
     params[:pet][:photos][:photo].each {|photo| @pet.photos.build(photo: photo)} if params[:pet][:photos].present?
@@ -103,6 +102,6 @@ class PetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pet_params
-      params.require(:pet).permit(:pname, :gender_cd, :age_cd, :bio, :for_adoption, :photos, :breed_id)
+      params.require(:pet).permit(:pname, :gender_cd, :age_cd, :size_cd, :bio, :for_adoption, :photos, :breed_id)
     end
 end

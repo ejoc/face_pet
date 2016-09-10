@@ -59,6 +59,13 @@
   </div>
 
   <div class="form-group">
+    <%= f.label :size, class: 'col-sm-3 control-label' %>
+    <div class="col-sm-6">
+      <%= select :pet, :size_cd, enum_option_pairs(Pet, :size, true), {}, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
     <%= f.label :bio, class: 'col-sm-3 control-label' %>
     <div class="col-sm-6">
       <%= f.text_area :bio, class: 'form-control' %>
