@@ -1,0 +1,30 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row">
+		<div class="col-lg-3">
+			<div class="ibox">
+				<div class="ibox-title"><h5>Filters</h5></div>
+			</div>
+		</div>
+		<div class="col-lg-9">
+			<div class="ibox">
+				<div class="ibox-title">
+          <span class="pull-right">(<strong><%= @pets.count %></strong>) pets</span>
+          <h5>Result</h5>
+        </div>
+        
+        	<% if @pets.blank? %>
+        		<div class="ibox-content">
+        			<h4>There are no pets containing the term <%= params[:search] %>.</h4>
+        		</div>
+        	<% else %>
+		        <%= render partial: 'pet', collection: @pets %>
+        	<% end %>
+
+        	<div id="paginate">
+		        <%= paginate @pets, :theme => 'twitter-bootstrap-3' %>
+		      </div>
+
+			</div>
+		</div>
+	</div>
+</div>

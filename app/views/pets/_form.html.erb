@@ -52,6 +52,13 @@
   </div>
 
   <div class="form-group">
+    <%= f.label :status, class: 'col-sm-3 control-label' %>
+    <div class="col-sm-6">
+      <%= select :pet, :status_cd, enum_option_pairs(Pet, :status, true), {}, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
     <%= f.label :age, class: 'col-sm-3 control-label' %>
     <div class="col-sm-6">
       <%= select :pet, :age_cd, enum_option_pairs(Pet, :age, true), {}, class: 'form-control' %>

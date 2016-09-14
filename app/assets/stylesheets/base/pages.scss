@@ -1082,9 +1082,9 @@ del {
 
 .cart-product-imitation {
   text-align: center;
-  padding-top: 30px;
-  height: 80px;
-  width: 80px;
+  //padding-top: 30px;
+  height: 150px;
+  width: 150px;
   background-color: lighten($gray, 2%);
 }
 
@@ -1126,7 +1126,7 @@ table.shoping-cart-table {
   }
 
   tr td:last-child {
-    width: 80px;
+    width: 160px;
   }
 
 }

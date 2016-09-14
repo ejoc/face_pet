@@ -100,7 +100,7 @@ GEM
       railties (>= 3.1.0)
       turbolinks
     json (2.0.2)
-    kaminari (0.16.3)
+    kaminari (0.17.0)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     listen (3.0.8)
@@ -249,7 +249,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   jquery-turbolinks (~> 2.1)
-  kaminari (~> 0.16.3)
+  kaminari (~> 0.17.0)
   listen (~> 3.0.5)
   mini_magick
   mongoid (~> 6.0.0.rc0)

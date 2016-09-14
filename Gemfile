@@ -55,7 +55,9 @@ gem 'mongoid-grid_fs', '~> 2.3'
 gem 'mongoid_search'
 
 # paginate
-gem 'kaminari', '~> 0.16.3'
+# gem 'kaminari', '~> 0.16.3'
+gem 'kaminari', '~> 0.17.0'
+# gem 'kaminari', :git => "git://github.com/amatsuda/kaminari.git", :branch => 'master'
 gem 'bootstrap-kaminari-views'
 
 

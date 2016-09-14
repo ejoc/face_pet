@@ -1,6 +1,6 @@
 class PetsController < ApplicationController
 
-  before_action :authenticate_user!, except: [:index, :photo, :photo_thumb, :photo_medium]
+  before_action :authenticate_user!, except: [:index, :show, :photo, :photo_thumb, :photo_medium]
 	before_action :set_pet, only: [:show, :edit, :update, :destroy, :set_pet_photo]
   before_action :set_pet_photo, only: [:photo, :photo_thumb, :photo_medium]
 
@@ -102,6 +102,6 @@ class PetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pet_params
-      params.require(:pet).permit(:pname, :gender_cd, :age_cd, :size_cd, :bio, :for_adoption, :photos, :breed_id)
+      params.require(:pet).permit(:pname, :gender_cd, :status_cd, :age_cd, :size_cd, :bio, :for_adoption, :photos, :breed_id)
     end
 end

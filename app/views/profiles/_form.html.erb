@@ -63,7 +63,7 @@
       elErrorContainer: '#kv-avatar-errors-2',
       msgErrorClass: 'alert alert-block alert-danger',
       //defaultPreviewContent: '<img src="<%= image_url "avatar/default.png" %>" alt="Your Avatar" style="width:100px"><h6 class="text-muted">Click to select</h6>',
-      defaultPreviewContent: '<%= image_tag(avatar_thumb_profile_path(@profile), :width=> "100%", :id => "avatar_img", :alt => @profile.full_name) %><h6 class="text-muted">Click to select</h6>',
+      defaultPreviewContent: '<%= image_tag(@profile.avatar.thumb.url, :width=> "100%", :id => "avatar_img", :alt => @profile.full_name) %><h6 class="text-muted">Click to select</h6>',
       layoutTemplates: {main2: '{preview} {remove} {browse}'},
       allowedFileExtensions: ["jpg", "png", "gif", 'jpeg']
     });

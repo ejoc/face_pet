@@ -1,0 +1,48 @@
+<div class="ibox-content">
+	<%= link_to pet_path(pet) do %>
+  <div class="table-responsive">
+        <table class="table shoping-cart-table">
+
+            <tbody>
+            <tr>
+                <td width="90">
+                    <div class="cart-product-imitation">
+                    	<%= image_tag(photo_medium_pet_path(pet, photo_id: pet.photos.first.id), :width=> "100%",  :alt => pet.pname) %>
+                    </div>
+                </td>
+                <td class="desc">
+                    <h3>
+                        
+                            <%= pet.pname %>
+                        
+                    </h3>
+
+                    <% if pet.bio? %>
+                    <p class="small pet-info">
+                        <%= pet.bio %>
+                    </p>
+                    <% end %>
+                    <dl class="small m-b-none pet-info">
+                        <dt>Breed</dt>
+                        <dd><%= pet.breed.name %></dd>
+                    </dl>
+                </td>
+                <td><h4 class="text-muted"><%= pet.age %></h4></td>
+                <td><h4 class="text-muted"><%= pet.gender %></h4></td>
+
+                <td>
+                    <h4 class="text-warning"><%= pet_status pet.status %></h4>
+                </td>
+                <td>
+                    <h5 class="pet-info">
+                    	
+                      Posted <%= pet.created_at.strftime("%b %d, %Y") %>
+                    </h5>
+                    
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+  <% end %>
+</div>

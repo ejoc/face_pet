@@ -1,11 +1,7 @@
 class HomeController < ApplicationController
 
 	def index
-		@pets = search_params.present? ? Pet.search(params[:search]).page(params[:page].to_i).per(15) : Pet.page(params[:page].to_i).per(15)
+		@pets = Pet.all.desc('_id').limit(8)
 	end
 
-	private
-		def search_params
-      params[:search] || {}
-    end
 end

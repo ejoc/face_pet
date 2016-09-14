@@ -19,8 +19,10 @@ Rails.application.routes.draw do
   	get :photo_medium, on: :member
   end
 
-  #match '/images/uploads/profile/avatar/:id/:filename' => 'profiles#avatar_thumb', constraints: { filename: /thumb.*/ }, via: :get
-  #match '/images/uploads/profile/avatar/:id/:filename' => 'profiles#avatar_medium', constraints: { filename: /medium.*/ }, via: :get
+  get 'search' => 'searches#index'
+
+  match '/images/uploads/profile/avatar/:id/:filename' => 'profiles#avatar_thumb', constraints: { filename: /thumb.*/ }, via: :get
+  match '/images/uploads/profile/avatar/:id/:filename' => 'profiles#avatar_medium', constraints: { filename: /medium.*/ }, via: :get
 
   # match '/images/uploads/pet_photo/photo/:pet_id/:id/:filename' => 'pets#photo_thumb', constraints: { filename: /thumb.*/ }, via: :get
   # match '/images/uploads/pet_photo/photo/:pet_id/:id/:filename' => 'pets#photo_medium', constraints: { filename: /medium.*/ }, via: :get

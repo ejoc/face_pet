@@ -7,12 +7,13 @@ class Pet
   field :pname,			   type: String
   # field :age, 		type: Integer
   field :bio,          type: String
-  field :for_adoption, type: Boolean
+  # field :for_adoption, type: Boolean
   field :city,			   type: String
 
   as_enum :age,        [:young, :adult, :senior, :puppy], field: { :type => Integer }
   as_enum :gender,     [:male, :female], field: { :type => Integer }
   as_enum :size,       [:small, :medium, :large], field: { :type => Integer }
+  as_enum :status,     [:adoption, :dating], field: { :type => Integer }
   
   belongs_to :user
   

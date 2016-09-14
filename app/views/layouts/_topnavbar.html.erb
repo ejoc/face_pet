@@ -15,7 +15,7 @@
                 </div>
             </form> -->
 
-            <%= form_tag(root_path, :method => "get", id: "search-form", class: 'navbar-form-custom') do %>
+            <%= form_tag(search_path, :method => "get", id: "search-form", class: 'navbar-form-custom') do %>
               <div class="form-group input-group mystyle">
                 <%= text_field_tag :search, params[:search], placeholder: "Search for pets...", class: 'form-control' %>
                 <span class="input-group-btn">
@@ -35,13 +35,13 @@
                 <li class="dropdown">
                     <a href="#" data-turbolinks="false" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                        
-                        <%= image_tag(avatar_thumb_profile_path(current_user.profile), :alt => current_user.profile.full_name, class: 'profile-image img-rounded') %>
+                        <%= image_tag(current_user.profile.avatar.thumb.url, :alt => current_user.profile.full_name, class: 'profile-image img-rounded') %>
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
-                        <li class="dropdown-header">
+                        <!-- <li class="dropdown-header">
                             <h5>Signed in as <strong class="css-truncate-target"><%= current_user.profile.full_name if current_user.profile.full_name? %></strong></h5>
-                        </li>
+                        </li> -->
                         <li role="separator" class="divider"></li>
                         <li>
                             <%= link_to "Your Pets", profile_path(current_user.profile.id) %>

@@ -1,5 +1,16 @@
+	<section id="banner" class="row border-bottom white-bg">
+		
+			<%= image_tag 'cover_pets.jpg' %>
+
+			<div class="contenedor">
+				<%= link_to 'Da en adopcion', new_pet_path, class: 'btn btn-lg btn-primary' %>
+			</div>
+	</section>
 <div class="wrapper wrapper-content">
 	<div class="row">
+		<div class="col-lg-12">
+			<h2>Ultimos agregados</h2>
+		</div>
 			<% @pets.each do |pet| %>
 				<div class="col-md-3">
 					<div class="ibox">
@@ -11,15 +22,16 @@
 									<%= image_tag(photo_medium_pet_path(pet, photo_id: pet.photos.first.id), :width=> "100%",  :alt => pet.pname) %>
 								</div>
 
+							<% end %>
+
 								<div class="product-desc">
 									<small class="text-muted"><%= pet.breed.name %></small>
-									<a href="#" class="product-name"> <%= pet.pname %></a>
+									<%= link_to pet.pname, pet_path(pet), class: 'product-name' %>
 									<div class="small m-t-xs">
 	                    <%= pet.bio if pet.bio? %>
 	                </div>
 	               
 								</div>
-							<% end %>
 
 						</div>
 						

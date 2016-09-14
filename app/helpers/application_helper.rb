@@ -27,12 +27,17 @@ module ApplicationHelper
       when :error
         "alert-error"
       when :alert
-        "alert-block"
+        "alert-info"
       when :notice
         "alert-info"
       else
         flash_type.to_s
     end
+  end
+
+  def pet_status status
+    return 'For adoption' if status == :adoption
+    'Free dating'
   end
 
 end
