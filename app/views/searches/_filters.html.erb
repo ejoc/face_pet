@@ -1,0 +1,18 @@
+ <%= form_tag(profile_path(current_user.profile.id), :method => "get", id: "search-form", class: 'form') do %>
+
+  <div class="form-group input-group">
+ 	<div class="form-group">
+    <%= label_tag :status, 'Estado', class: 'col-sm-3 control-label' %>
+    <div class="col-sm-6">
+      <%= select :pet, :status_cd, enum_option_pairs(Pet, :status, true), {}, class: 'form-control' %>
+    </div>
+  </div>
+    
+    <span class="input-group-btn">
+      
+      <%= button_tag(class: "btn btn-default", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Search"}) do %>
+          <i class="fa fa-search"></i>
+      <% end %>
+    </span>
+  </div>
+<% end %>

@@ -12,9 +12,7 @@
                 </td>
                 <td class="desc">
                     <h3>
-                        
-                            <%= pet.pname %>
-                        
+                        <%= pet.pname %>       
                     </h3>
 
                     <% if pet.bio? %>
@@ -23,7 +21,7 @@
                     </p>
                     <% end %>
                     <dl class="small m-b-none pet-info">
-                        <dt>Breed</dt>
+                        <dt>Raza</dt>
                         <dd><%= pet.breed.name %></dd>
                     </dl>
                 </td>
@@ -31,7 +29,7 @@
                 <td><h4 class="text-muted"><%= pet.gender %></h4></td>
 
                 <td>
-                    <h4 class="text-warning"><%= pet_status pet.status %></h4>
+                    <h4 class="text-warning"><%= pet_status pet %></h4>
                 </td>
                 <td>
                     <h5 class="pet-info">

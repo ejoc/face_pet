@@ -19,9 +19,9 @@
 
 						<div class="col-md-7">
 							<h2 class="font-bold m-b-xs"><%= @pet.pname.capitalize %></h2>
-							<small>Joined on <%= @pet.created_at.strftime("%b %d, %Y") %></li></small>
+							<small>Posted on <%= @pet.created_at.strftime("%b %d, %Y") %></li></small>
 							<div class="m-t-md">
-                  <h2> <%= pet_status @pet.status %> </h2>
+                  <h2> <%= pet_status @pet %> </h2>
               </div>
 
               <hr>
@@ -37,28 +37,28 @@
 
 	            <div class="row">
 	            	<div class="col-lg-3">
-	            		<h4>Breed</h4>
+	            		<h4>Raza</h4>
 	            		<div class="small text-muted">
 	            			<%= @pet.breed.name %>
 	            		</div>
 	            	</div>
 
 	            	<div class="col-lg-3">
-	            		<h4>Gender</h4>
+	            		<h4>Genero</h4>
 	            		<div class="small text-muted">
 	            			<%= @pet.gender %>
 	            		</div>
 	            	</div>
 
 	            	<div class="col-lg-3">
-	            		<h4>Age</h4>
+	            		<h4>Edad</h4>
 	            		<div class="small text-muted">
 	            			<%= @pet.age %>
 	            		</div>
 	            	</div>
 
 	            	<div class="col-lg-3">
-	            		<h4>Size</h4>
+	            		<h4>Tamaño</h4>
 	            		<div class="small text-muted">
 	            			<%= @pet.size %>
 	            		</div>
@@ -68,7 +68,7 @@
 
 	            <hr>
 
-	            <h4>Owner Information</h4>
+	            <h4>Informacion del dueño</h4>
 	            <div class="small text-muted">
 	            	<%= @pet.owner.profile.full_name %><br>
 	            	<%= @pet.owner.email %><br>

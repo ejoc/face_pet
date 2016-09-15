@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="form-group">
-  <%= f.label :photos, class: 'col-sm-2 control-label'  %>
+  <%= f.label :photos, 'Fotos', class: 'col-sm-2 control-label'  %>
   <%= f.fields_for :photos do |builder| %>
     <div class="col-sm-8 kv-avatar center-block">
       <%= builder.file_field :photo, id: 'pet_photos', class: "file-loading", :multiple => true %>
@@ -22,14 +22,14 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :pname, class: 'col-sm-3 control-label' %>
+    <%= f.label :pname, 'Nombre', class: 'col-sm-3 control-label' %>
     <div class="col-sm-6">
       <%= f.text_field :pname, class: 'form-control' %>
     </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :categories, class: 'col-sm-3 control-label' %>
+    <%= f.label :categories, 'Categoria', class: 'col-sm-3 control-label' %>
     <div class="col-sm-6">
       <%= select_tag "categories", options_from_collection_for_select(Pets::Category.all, "id", "name"), {class: "form-control", :include_blank => 'Eliga la categoria'} %>
     </div>
@@ -37,7 +37,7 @@
  
 
   <div class="form-group" id="form-group-breed">
-    <%= f.label :breed, class: 'col-sm-3 control-label' %>
+    <%= f.label :breed, 'Raza', class: 'col-sm-3 control-label' %>
     <div class="col-sm-6">
       <%= f.grouped_collection_select :breed_id, Pets::Category.order_by(:name => 'asc'), :breeds, :name, :id, :name,{include_blank: 'Eliga la raza'}, class: "form-control chosen-select-deselect" %>
 
@@ -45,28 +45,28 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :gender, class: 'col-sm-3 control-label' %>
-    <div class="col-sm-6">
-      <%= select :pet, :gender_cd, enum_option_pairs(Pet, :gender, true), {}, class: 'form-control' %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :status, class: 'col-sm-3 control-label' %>
+    <%= f.label :status, 'Estado', class: 'col-sm-3 control-label' %>
     <div class="col-sm-6">
       <%= select :pet, :status_cd, enum_option_pairs(Pet, :status, true), {}, class: 'form-control' %>
     </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :age, class: 'col-sm-3 control-label' %>
+    <%= f.label :gender, 'Genero', class: 'col-sm-3 control-label' %>
+    <div class="col-sm-6">
+      <%= select :pet, :gender_cd, enum_option_pairs(Pet, :gender, true), {}, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :age, 'Edad', class: 'col-sm-3 control-label' %>
     <div class="col-sm-6">
       <%= select :pet, :age_cd, enum_option_pairs(Pet, :age, true), {}, class: 'form-control' %>
     </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :size, class: 'col-sm-3 control-label' %>
+    <%= f.label :size, 'Tamaño', class: 'col-sm-3 control-label' %>
     <div class="col-sm-6">
       <%= select :pet, :size_cd, enum_option_pairs(Pet, :size, true), {}, class: 'form-control' %>
     </div>

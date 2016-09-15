@@ -35,9 +35,9 @@ module ApplicationHelper
     end
   end
 
-  def pet_status status
-    return 'For adoption' if status == :adoption
-    'Free dating'
-  end
+  # def pet_status status
+  #   return 'For adoption' if status == :adoption
+  #   'Free dating'
+  # end
 
 end

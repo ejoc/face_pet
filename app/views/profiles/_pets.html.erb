@@ -1,10 +1,14 @@
-<div class="input-group">
-    <input type="text" placeholder="Search" class="input form-control">
+ <%= form_tag(profile_path(current_user.profile.id), :method => "get", id: "search-form", class: 'form') do %>
+  <div class="form-group input-group">
+    <%= text_field_tag :search, params[:search], placeholder: "Search Chapters", class: 'form-control' %>
     <span class="input-group-btn">
-        <button type="button" class="btn btn btn-primary"> <i class="fa fa-search"></i> Search</button>
+      
+      <%= button_tag(class: "btn btn-default", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Search"}) do %>
+          <i class="fa fa-search"></i>
+      <% end %>
     </span>
-</div>
-
+  </div>
+<% end %>
 <div class="clients-list">
 	<div class="full-height-scroll">
 	  <div class="table-responsive">

@@ -6,7 +6,8 @@ class ProfilesController < ApplicationController
 
 	def show
     if params[:search].present?
-      @pets = @profile.user.pets
+      Rails.logger.debug "asdasd"
+      @pets = @profile.user.pets.search(params[:search]).page(params[:page].to_i).per(15)
       # @chapters = Chapter.page(params[:page].to_i).per(15)
     else
       @pets = @profile.user.pets
